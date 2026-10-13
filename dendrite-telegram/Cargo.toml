@@ -13,7 +13,7 @@ grammers-mtsender = "=0.10.0"
 grammers-tl-types = "=0.10.0"
 grammers-crypto = "=0.10.0"
 # Grammers 0.10 expects rc0's BigUint/bool API; rc1 changes both.
-glass_pumpkin = "=2.0.0-rc0"
+glass_pumpkin = "=2.0.0-rc1"
 tokio = { version = "1", features = ["rt-multi-thread", "macros", "io-std", "io-util", "sync", "time"] }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
