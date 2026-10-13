@@ -37,7 +37,8 @@ and follow the separate procedure below.
    checked-in `distribution/public-client/production.json` to the Production
    project's public key. Official and community builders load the same explicit
    configuration and pass it as `SYNTHIUS_SUPABASE_PUBLIC_KEY`; Rust has no key fallback.
-4. As @x-aero, manually dispatch `Release Dendrite (Production)` from **main**
+4. As @x-aero, create the exact stable tag at the reviewed main commit, then
+   manually dispatch `Release Dendrite (Production)` from **main**
    with the exact stable tag matching the desktop version, such as `v2.1.4`.
    The workflow validates CI, builds all four targets, creates checksums,
    CycloneDX inventories and provenance, verifies the complete artifact set,
@@ -46,6 +47,7 @@ and follow the separate procedure below.
    integration and packaged-image checks before Production promotion.
 
 ```sh
+git push origin REVIEWED_MAIN_COMMIT:refs/tags/v2.1.4
 gh workflow run package.yml --ref main -f release_tag=v2.1.4
 ```
 

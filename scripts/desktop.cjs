@@ -17,6 +17,7 @@ function reserveDesktopTag(tag,version,channel,commit,execute=run) {
   if (channel==='preview') assertPrivatePreviewRepository(execute);
   const refs=JSON.parse(execute('gh',['api',`repos/${repo}/git/matching-refs/tags/${encodeURIComponent(tag)}`]));
   let ref=refs.find(value=>value.ref===`refs/tags/${tag}`);
+  if (!ref && channel==='production') throw new Error('The owner must create the exact Production tag before dispatching a release');
   if (!ref) ref=JSON.parse(execute('gh',['api',`repos/${repo}/git/refs`,'--method','POST','-f',`ref=refs/tags/${tag}`,'-f',`sha=${commit}`]));
   if (ref.ref!==`refs/tags/${tag}`) throw new Error('Unexpected desktop tag identity');
   let object=ref.object;

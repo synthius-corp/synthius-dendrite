@@ -33,9 +33,8 @@ Keep the existing auto-merge setting disabled. Document and inspect each owner
 acceptance; do not grant another administrator a general bypass.
 
 Protect `v*` tags against creation outside the owner-controlled release path,
-updates and deletion. The release workflow's token needs permission to reserve
-the exact tag; grant any necessary integration exception only with reviewed
-workflows and read-only ordinary PR tokens. Do not give contributors a tag or
+updates and deletion. The owner creates the exact tag before dispatch; the
+workflow's read-only preflight verifies it. Do not give contributors a tag or
 release bypass. Verify the resulting rules, not just their configuration file.
 
 Apply the `github-main-owner-ruleset.json` and `github-main-integrity-ruleset.json`
@@ -43,8 +42,11 @@ files from `distribution/` as active rulesets. Main updates have only the verifi
 owner User bypass; force pushes and deletion have no bypass. The owner can merge
 or push without another person's review or a mandatory check run.
 Apply `github-tag-owner-ruleset.json` and `github-tag-integrity-ruleset.json` too:
-the owner and the gated release workflow's GitHub Actions integration can create
-version tags, but neither can update or delete them. Keep ordinary workflow
+only the owner can create version tags; no actor can update or delete them.
+Create the exact Production tag at the reviewed main commit before dispatching
+its manual release. The workflow verifies that existing tag instead of creating
+one. GitHub's built-in Actions app cannot be selected as a tag ruleset bypass.
+Keep ordinary workflow
 tokens read-only. `github-selected-actions.json` and
 `github-workflow-permissions.json` supply the allowed action pins and token policy.
 

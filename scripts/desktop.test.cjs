@@ -80,6 +80,15 @@ test('desktop preflight reserves the exact source tag before expensive builds',(
     [{ref:`refs/tags/${tag}`,object:{type:'tag',sha:'b'.repeat(40)}}]:{object:{type:'commit',sha:commit}});
   reserveDesktopTag(tag,'2.1.4','preview',commit,annotated);
 });
+test('Production requires the owner-created exact tag and never creates a tag with the workflow token',()=>{
+  const tag='v2.1.4',commit='a'.repeat(40),calls=[];
+  const execute=(program,args)=>{calls.push(args);return JSON.stringify([]);};
+  assert.throws(()=>reserveDesktopTag(tag,'2.1.4','production',commit,execute),/owner must create/);
+  assert.equal(calls.length,1);
+  assert.ok(!calls[0].includes('POST'));
+  reserveDesktopTag(tag,'2.1.4','production',commit,()=>JSON.stringify([{ref:`refs/tags/${tag}`,object:{type:'commit',sha:commit}}]));
+  assert.throws(()=>reserveDesktopTag(tag,'2.1.4','production',commit,()=>JSON.stringify([{ref:`refs/tags/${tag}`,object:{type:'commit',sha:'b'.repeat(40)}}])),/exact build source/);
+});
 test('desktop workflow builds only the three affected production targets',()=>{
   const workflow=fs.readFileSync(path.join(__dirname,'../.github/workflows/desktop.yml'),'utf8');
   assert.match(workflow,/workflow_dispatch/);
