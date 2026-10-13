@@ -53,6 +53,17 @@ This ordinary build does not create updater artifacts. For a signed development
 candidate, keep the private key under the root ignored `work/` directory and
 run `./build_updater_dev.ps1`. Do not commit private keys or generated artifacts.
 
+This build needs no Synthius maintainer secrets. Without Telegram application
+credentials, it compiles and runs with live Telegram login/import unavailable;
+ordinary source parsing, including saved Telegram exports, remains available.
+To include live Telegram import, obtain your own `api_id` and `api_hash` from
+[Telegram's application registration](https://core.telegram.org/api/obtaining_api_id),
+set `SYNTHIUS_TELEGRAM_API_ID` and `SYNTHIUS_TELEGRAM_API_HASH` in the process
+environment before the same `npm run build:production` command, and use your own
+Synthius/Telegram accounts. Official release workflows supply Synthius's separate
+application identity from `owner-release`; community builds never need that pair.
+The offline commands intentionally clear Telegram credentials.
+
 ### Use the repo helper
 
 ```powershell

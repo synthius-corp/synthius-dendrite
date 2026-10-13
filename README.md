@@ -122,11 +122,17 @@ compromised devices and OS paging remain residual risks.
 ### Configure a development Telegram build
 
 Create your application credentials through [Telegram application registration](https://core.telegram.org/api/obtaining_api_id).
-Supply `SYNTHIUS_TELEGRAM_API_ID` and `SYNTHIUS_TELEGRAM_API_HASH` to the Rust
-build process, then use the existing local-dev build helper. Keep values out
-of Git, logs and command arguments. These identify the application and are
-embedded in its public binary; user authorization remains a separate memory-only
-session. A build without the pair disables the importer cleanly. No backend
+For a community build with live Telegram import, set your own
+`SYNTHIUS_TELEGRAM_API_ID` and `SYNTHIUS_TELEGRAM_API_HASH` in the build process
+environment, then run `npm run build:production`. This command loads the public
+Production client configuration automatically; sign in with your own Synthius
+and Telegram accounts. You do not need Synthius's Telegram application credentials.
+Keep values out of Git, logs and command arguments. These identify your Telegram
+application and are embedded in its binary; user authorization remains a separate
+memory-only session. Without the pair, the app still compiles and runs, but live
+Telegram login/import is unavailable. Parsing saved exports does not require them.
+The `test:desktop`, `build:offline` and `dev:offline` commands deliberately omit
+Telegram credentials for isolated development. No backend
 Telegram session service is needed. The configured Synthius backend must support
 authenticated account-consent GET/POST endpoints at
 `/api/files/telegram-import-consent` (web JWT) and
