@@ -14,7 +14,7 @@
     "test": "node scripts/licenses.cjs check && node --test ui/source-selection.test.cjs ui/telegram.test.cjs scripts/release.test.cjs scripts/desktop.test.cjs scripts/release-guard.test.cjs scripts/ci-policy.test.cjs scripts/licenses.test.cjs scripts/local-dev.test.cjs scripts/offline-dev.test.cjs scripts/client-build.test.cjs"
   },
   "devDependencies": {
-    "@tauri-apps/cli": "2.12.0",
+    "@tauri-apps/cli": "2.12.1",
     "sharp": "^0.35.5"
   }
 }
