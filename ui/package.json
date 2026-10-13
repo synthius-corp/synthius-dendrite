@@ -1,0 +1,15 @@
+{
+  "name": "@synthius/dendrite-source-selection",
+  "version": "0.1.1",
+  "description": "Shared deterministic file, folder and drop collection for Synthius Sources and Dendrite",
+  "license": "Apache-2.0",
+  "main": "./source-selection.cjs",
+  "types": "./source-selection.d.cts",
+  "exports": {
+    ".": {
+      "types": "./source-selection.d.cts",
+      "default": "./source-selection.cjs"
+    }
+  },
+  "files": ["source-selection.cjs", "source-selection.d.cts", "LICENSE"]
+}

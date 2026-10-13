@@ -1,0 +1,22 @@
+{
+  "corpus": "{\"id\":\"d_97409acca78bd8a0_0\",\"reference_metadata\":{\"original_id\":\"1\",\"record\":1,\"text_sha256\":\"0d6ea8c6750b9ef290b75268273db7c0b58c52ac03da7978f1e5e8b1184e4517\",\"version\":1},\"source\":\"telegram\",\"text\":\"Synthetic telegram memory about a language lesson.\",\"ts\":\"2026-01-01T10:00:00Z\",\"type\":\"message\",\"uid\":\"synthetic-user\",\"user\":\"Synthetic Alex\"}\n",
+  "corpus_schema": "synthius-corpus/v1",
+  "corpus_sha256": "671a90ffd71ea8b839ec0fc57542f6e33c9376ce27fb21ada3cdaeb0f340ee05",
+  "date_end": "2026-01-01T10:00:00Z",
+  "date_start": "2026-01-01T10:00:00Z",
+  "message_count": 1,
+  "parser_id": "telegram_json",
+  "parser_version": "1.1.0",
+  "participants": [
+    {
+      "first_message": "2026-01-01T10:00:00Z",
+      "last_message": "2026-01-01T10:00:00Z",
+      "message_count": 1,
+      "name": "Synthetic Alex",
+      "word_count": 7
+    }
+  ],
+  "source_sha256": "97409acca78bd8a0189aa1aa3128cc9e530e14b5f3ae87dd7b7cba6ab4fcf05f",
+  "subtype": "telegram_json",
+  "word_count": 7
+}

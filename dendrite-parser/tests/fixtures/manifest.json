@@ -1,0 +1,202 @@
+[
+  {
+    "filename": "telegram.json",
+    "category": "chat",
+    "subtype": "telegram_json",
+    "parser_id": "telegram_json",
+    "contains": "Synthetic telegram memory",
+    "expected": "expected/telegram.json.json"
+  },
+  {
+    "filename": "axon-telegram.jsonl",
+    "category": "chat",
+    "subtype": "axon_telegram",
+    "parser_id": "axon_stream",
+    "contains": "Synthetic continuous Telegram memory",
+    "expected": "expected/axon-telegram.jsonl.json"
+  },
+  {
+    "filename": "axon-gmail.jsonl",
+    "category": "dialogs",
+    "subtype": "axon_gmail",
+    "parser_id": "axon_stream",
+    "contains": "Synthetic continuous Gmail memory",
+    "expected": "expected/axon-gmail.jsonl.json"
+  },
+  {
+    "filename": "whatsapp-standard.txt",
+    "category": "chat",
+    "subtype": "whatsapp_txt",
+    "parser_id": "whatsapp_text",
+    "contains": "Synthetic whatsapp standard memory",
+    "expected": "expected/whatsapp-standard.txt.json"
+  },
+  {
+    "filename": "whatsapp-alternate.txt",
+    "category": "chat",
+    "subtype": "whatsapp_alt",
+    "parser_id": "whatsapp_text",
+    "contains": "Synthetic whatsapp alternate memory",
+    "expected": "expected/whatsapp-alternate.txt.json"
+  },
+  {
+    "filename": "plain.txt",
+    "category": "notes",
+    "subtype": "plain_text",
+    "parser_id": "document_text",
+    "contains": "Synthetic person records",
+    "expected": "expected/plain.txt.json"
+  },
+  {
+    "filename": "plain.text",
+    "category": "notes",
+    "subtype": "plain_text",
+    "parser_id": "document_text",
+    "contains": "Synthetic person records",
+    "expected": "expected/plain.text.json"
+  },
+  {
+    "filename": "notes.md",
+    "category": "notes",
+    "subtype": "markdown",
+    "parser_id": "document_markdown",
+    "contains": "Synthetic journal",
+    "expected": "expected/notes.md.json"
+  },
+  {
+    "filename": "notes.markdown",
+    "category": "notes",
+    "subtype": "markdown",
+    "parser_id": "document_markdown",
+    "contains": "Synthetic journal alias",
+    "expected": "expected/notes.markdown.json"
+  },
+  {
+    "filename": "obsidian.md",
+    "category": "notes",
+    "subtype": "obsidian_md",
+    "parser_id": "document_markdown",
+    "contains": "Synthetic Project",
+    "expected": "expected/obsidian.md.json"
+  },
+  {
+    "filename": "notes.html",
+    "category": "notes",
+    "subtype": "html",
+    "parser_id": "document_html",
+    "contains": "Synthetic person records",
+    "expected": "expected/notes.html.json"
+  },
+  {
+    "filename": "notes.htm",
+    "category": "notes",
+    "subtype": "html",
+    "parser_id": "document_html",
+    "contains": "Synthetic person records",
+    "expected": "expected/notes.htm.json"
+  },
+  {
+    "filename": "apple-notes.html",
+    "category": "notes",
+    "subtype": "apple_notes",
+    "parser_id": "document_html",
+    "contains": "Synthetic person records",
+    "expected": "expected/apple-notes.html.json"
+  },
+  {
+    "filename": "notes.json",
+    "category": "notes",
+    "subtype": "document_json",
+    "parser_id": "document_json",
+    "contains": "Synthetic journal",
+    "expected": "expected/notes.json.json"
+  },
+  {
+    "filename": "profile.pdf",
+    "category": "notes",
+    "subtype": "pdf",
+    "parser_id": "document_pdf",
+    "contains": "Synthetic person records",
+    "expected": "expected/profile.pdf.json"
+  },
+  {
+    "filename": "profile.docx",
+    "category": "notes",
+    "subtype": "docx",
+    "parser_id": "document_docx",
+    "contains": "Synthetic person records",
+    "expected": "expected/profile.docx.json"
+  },
+  {
+    "filename": "notes.rtf",
+    "category": "notes",
+    "subtype": "rtf",
+    "parser_id": "document_rtf",
+    "contains": "Synthetic person records",
+    "expected": "expected/notes.rtf.json"
+  },
+  {
+    "filename": "notes.odt",
+    "category": "notes",
+    "subtype": "odt",
+    "parser_id": "document_odt",
+    "contains": "Synthetic person records",
+    "expected": "expected/notes.odt.json"
+  },
+  {
+    "filename": "memoir.epub",
+    "category": "biography",
+    "subtype": "epub",
+    "parser_id": "ebook_epub",
+    "contains": "Synthetic person records",
+    "expected": "expected/memoir.epub.json"
+  },
+  {
+    "filename": "memoir.fb2",
+    "category": "biography",
+    "subtype": "fb2",
+    "parser_id": "ebook_fb2",
+    "contains": "Synthetic person records",
+    "expected": "expected/memoir.fb2.json"
+  },
+  {
+    "filename": "archive.zip",
+    "category": "notes",
+    "subtype": "archive_text",
+    "parser_id": "archive_text",
+    "contains": "Synthetic archive",
+    "expected": "expected/archive.zip.json"
+  },
+  {
+    "filename": "notion-export.zip",
+    "category": "notes",
+    "subtype": "notion_export",
+    "parser_id": "archive_text",
+    "contains": "Synthetic home",
+    "expected": "expected/notion-export.zip.json"
+  },
+  {
+    "filename": "linkedin-export.zip",
+    "category": "cv",
+    "subtype": "linkedin_export",
+    "parser_id": "linkedin_export",
+    "contains": "Artificial profile",
+    "expected": "expected/linkedin-export.zip.json"
+  },
+  {
+    "filename": "instagram-export.zip",
+    "category": "notes",
+    "subtype": "instagram_export",
+    "parser_id": "instagram_export",
+    "contains": "Synthetic Alex",
+    "expected": "expected/instagram-export.zip.json"
+  },
+  {
+    "filename": "facebook-export.zip",
+    "category": "notes",
+    "subtype": "facebook_export",
+    "parser_id": "facebook_export",
+    "contains": "Synthetic person records",
+    "expected": "expected/facebook-export.zip.json"
+  }
+]

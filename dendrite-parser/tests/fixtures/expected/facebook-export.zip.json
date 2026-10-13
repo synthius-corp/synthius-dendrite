@@ -1,0 +1,22 @@
+{
+  "corpus": "{\"id\":\"d_da764cd64f9daada_0\",\"reference_metadata\":{\"paragraph_end\":1,\"paragraph_start\":1,\"record\":1,\"text_sha256\":\"732ee3124c5e736baf50b9088a85546a9de2d9844bfd5b5461286b99f70189c4\",\"version\":1},\"source\":\"document\",\"text\":\"{\\\"participants\\\":[{\\\"name\\\":\\\"Synthetic Alex\\\"}],\\\"messages\\\":[{\\\"sendername\\\":\\\"Synthetic Alex\\\",\\\"timestampms\\\":1767225600000,\\\"content\\\":\\\"Synthetic person records a calm morning routine, a collaborative project, a family call, and a plan to learn a new language next month.\\\"}]}\",\"ts\":null,\"type\":\"notes\",\"uid\":\"document\",\"user\":\"Synthetic Person\"}\n",
+  "corpus_schema": "synthius-corpus/v1",
+  "corpus_sha256": "0d3ab7f2b8961085d57a65ffe83e0ff5fdb05e0f4d06d2e8a1dca797f71b6376",
+  "date_end": null,
+  "date_start": null,
+  "message_count": 1,
+  "parser_id": "facebook_export",
+  "parser_version": "1.1.0",
+  "participants": [
+    {
+      "first_message": null,
+      "last_message": null,
+      "message_count": 1,
+      "name": "Synthetic Person",
+      "word_count": 25
+    }
+  ],
+  "source_sha256": "da764cd64f9daada34ae83907f91fe1744a8d5b1ad985c569e95dcb62f4aec6f",
+  "subtype": "facebook_export",
+  "word_count": 25
+}

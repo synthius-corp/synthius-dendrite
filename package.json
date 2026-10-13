@@ -1,0 +1,20 @@
+{
+  "name": "synthius-dendrite-assets",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "24.x"
+  },
+  "scripts": {
+    "test:desktop": "node scripts/offline-dev.cjs test",
+    "build:offline": "node scripts/offline-dev.cjs build",
+    "build:production": "node scripts/client-build.cjs",
+    "dev:offline": "node scripts/offline-dev.cjs dev",
+    "licenses": "node scripts/licenses.cjs prepare",
+    "test": "node scripts/licenses.cjs check && node --test ui/source-selection.test.cjs ui/telegram.test.cjs scripts/release.test.cjs scripts/desktop.test.cjs scripts/release-guard.test.cjs scripts/ci-policy.test.cjs scripts/licenses.test.cjs scripts/local-dev.test.cjs scripts/offline-dev.test.cjs scripts/client-build.test.cjs"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "2.12.0",
+    "sharp": "^0.35.5"
+  }
+}

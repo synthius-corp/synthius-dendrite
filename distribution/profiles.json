@@ -1,0 +1,26 @@
+{
+  "production": {
+    "productName": "Synthius Dendrite",
+    "identifier": "app.synthius.sidecar",
+    "dataDirectory": "SynthiusSidecar",
+    "port": 1543,
+    "supabaseUrl": "https://wjegriwrnrwndbonxkeg.supabase.co",
+    "webAppUrl": "https://app.synthius.ai/files",
+    "backendUrl": "https://api.synthius.ai"
+  },
+  "local-dev": {
+    "productName": "Synthius Dendrite Local Dev",
+    "identifier": "app.synthius.dendrite.localdev",
+    "dataDirectory": "SynthiusDendriteLocalDev",
+    "port": 1543,
+    "supabaseUrl": "http://127.0.0.1:54321",
+    "webAppUrl": "http://localhost:3000/files",
+    "backendUrl": "http://127.0.0.1:8000"
+  },
+  "preview": {
+    "productName": "Synthius Dendrite Preview",
+    "identifier": "app.synthius.dendrite.preview",
+    "dataDirectory": "SynthiusDendritePreview",
+    "port": 1544
+  }
+}

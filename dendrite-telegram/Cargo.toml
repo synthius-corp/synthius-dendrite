@@ -1,0 +1,30 @@
+[package]
+name = "synthius-dendrite-telegram"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.90"
+license = "Apache-2.0"
+description = "One-time, memory-only Telegram history import for Synthius Dendrite"
+
+[dependencies]
+grammers-client = "=0.10.0"
+grammers-session = { version = "=0.10.0", default-features = false }
+grammers-mtsender = "=0.10.0"
+grammers-tl-types = "=0.10.0"
+grammers-crypto = "=0.10.0"
+# Grammers 0.10 expects rc0's BigUint/bool API; rc1 changes both.
+glass_pumpkin = "=2.0.0-rc0"
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "io-std", "io-util", "sync", "time"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+chrono = { version = "0.4", features = ["clock", "serde"] }
+zeroize = { version = "1", features = ["derive"] }
+qrcode = { version = "=0.14.1", default-features = false, features = ["svg"] }
+base64 = "0.22"
+sha2 = "0.10"
+uuid = { version = "1", features = ["v4", "v5", "serde"] }
+tempfile = "=3.24.0"
+futures-util = "0.3"
+
+[dev-dependencies]
+synthius-dendrite-parser = { path = "../dendrite-parser" }

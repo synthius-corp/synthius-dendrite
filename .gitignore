@@ -1,0 +1,38 @@
+# Python virtual environment
+venv/
+
+# Build outputs
+build/
+dist/
+node_modules/
+
+# Rust/Tauri build artifacts
+src-tauri/target/
+target/
+
+# Sidecar binaries (large, rebuilt)
+src-tauri/binaries/*.exe
+src-tauri/binaries/synthiusSidecar-*
+
+# Local Python leftovers
+__pycache__/
+*.pyc
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Updater signing keys are never repository content.
+*.key
+*.key.pub
+.env
+.env.*
+!.env.example
+work/
+staging/
+*.tgz
+*.log

@@ -1,0 +1,22 @@
+{
+  "corpus": "{\"id\":\"d_6a2ab5d20dd7a023_0\",\"reference_metadata\":{\"paragraph_end\":1,\"paragraph_start\":1,\"record\":1,\"text_sha256\":\"7c961c338c7c2c6882222dc50c0a096c6abcad4625364abc4bb715bcbbc0cd06\",\"version\":1},\"source\":\"document\",\"text\":\"Synthetic person records a calm morning routine, a collaborative project, a family call, and a plan to learn a new language next month.\",\"ts\":null,\"type\":\"notes\",\"uid\":\"document\",\"user\":\"Synthetic Person\"}\n",
+  "corpus_schema": "synthius-corpus/v1",
+  "corpus_sha256": "afd6f4253cfcb3aecf45a1dd5ed545e379a3591c982c8fda77c26f9b66bf7eff",
+  "date_end": null,
+  "date_start": null,
+  "message_count": 1,
+  "parser_id": "document_odt",
+  "parser_version": "1.1.0",
+  "participants": [
+    {
+      "first_message": null,
+      "last_message": null,
+      "message_count": 1,
+      "name": "Synthetic Person",
+      "word_count": 23
+    }
+  ],
+  "source_sha256": "6a2ab5d20dd7a0236a02b1bcaa94eaf497e11cb6c0ec648cddf143c64ba6d067",
+  "subtype": "odt",
+  "word_count": 23
+}

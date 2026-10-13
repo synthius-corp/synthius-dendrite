@@ -1,0 +1,291 @@
+[
+  {
+    "parser_id": "telegram_json",
+    "case": "malformed",
+    "filename": "telegram.json"
+  },
+  {
+    "parser_id": "telegram_json",
+    "case": "ambiguous",
+    "filename": "synthetic-telegram-facebook-export.bin",
+    "source_fixture": "telegram.json",
+    "expected_subtype": "telegram_json"
+  },
+  {
+    "parser_id": "telegram_json",
+    "case": "resource",
+    "filename": "telegram.json"
+  },
+  {
+    "parser_id": "axon_stream",
+    "case": "malformed",
+    "filename": "axon-telegram.jsonl"
+  },
+  {
+    "parser_id": "axon_stream",
+    "case": "ambiguous",
+    "filename": "synthetic-telegram-facebook-export.jsonl",
+    "source_fixture": "axon-telegram.jsonl",
+    "expected_subtype": "axon_telegram"
+  },
+  {
+    "parser_id": "axon_stream",
+    "case": "resource",
+    "filename": "axon-telegram.jsonl"
+  },
+  {
+    "parser_id": "whatsapp_text",
+    "case": "malformed",
+    "filename": "whatsapp-standard.txt"
+  },
+  {
+    "parser_id": "whatsapp_text",
+    "case": "ambiguous",
+    "filename": "synthetic-telegram-facebook-export.txt",
+    "source_fixture": "whatsapp-standard.txt",
+    "expected_subtype": "whatsapp_txt"
+  },
+  {
+    "parser_id": "whatsapp_text",
+    "case": "resource",
+    "filename": "whatsapp-standard.txt"
+  },
+  {
+    "parser_id": "document_text",
+    "case": "malformed",
+    "filename": "plain.txt"
+  },
+  {
+    "parser_id": "document_text",
+    "case": "ambiguous",
+    "filename": "synthetic-telegram-facebook-export.txt",
+    "source_fixture": "plain.txt",
+    "expected_subtype": "plain_text"
+  },
+  {
+    "parser_id": "document_text",
+    "case": "resource",
+    "filename": "plain.txt"
+  },
+  {
+    "parser_id": "document_markdown",
+    "case": "malformed",
+    "filename": "notes.md"
+  },
+  {
+    "parser_id": "document_markdown",
+    "case": "ambiguous",
+    "filename": "synthetic-telegram-facebook-export.md",
+    "source_fixture": "notes.md",
+    "expected_subtype": "markdown"
+  },
+  {
+    "parser_id": "document_markdown",
+    "case": "resource",
+    "filename": "notes.md"
+  },
+  {
+    "parser_id": "document_html",
+    "case": "malformed",
+    "filename": "notes.html"
+  },
+  {
+    "parser_id": "document_html",
+    "case": "ambiguous",
+    "filename": "synthetic-telegram-facebook-export.bin",
+    "source_fixture": "notes.html",
+    "expected_subtype": "html"
+  },
+  {
+    "parser_id": "document_html",
+    "case": "resource",
+    "filename": "notes.html"
+  },
+  {
+    "parser_id": "document_json",
+    "case": "malformed",
+    "filename": "notes.json"
+  },
+  {
+    "parser_id": "document_json",
+    "case": "ambiguous",
+    "filename": "synthetic-telegram-facebook-export.json",
+    "source_fixture": "notes.json",
+    "expected_subtype": "document_json"
+  },
+  {
+    "parser_id": "document_json",
+    "case": "resource",
+    "filename": "notes.json"
+  },
+  {
+    "parser_id": "document_pdf",
+    "case": "malformed",
+    "filename": "profile.pdf"
+  },
+  {
+    "parser_id": "document_pdf",
+    "case": "ambiguous",
+    "filename": "synthetic-telegram-facebook-export.bin",
+    "source_fixture": "profile.pdf",
+    "expected_subtype": "pdf"
+  },
+  {
+    "parser_id": "document_pdf",
+    "case": "resource",
+    "filename": "profile.pdf"
+  },
+  {
+    "parser_id": "document_docx",
+    "case": "malformed",
+    "filename": "profile.docx"
+  },
+  {
+    "parser_id": "document_docx",
+    "case": "ambiguous",
+    "filename": "synthetic-telegram-facebook-export.bin",
+    "source_fixture": "profile.docx",
+    "expected_subtype": "docx"
+  },
+  {
+    "parser_id": "document_docx",
+    "case": "resource",
+    "filename": "profile.docx"
+  },
+  {
+    "parser_id": "document_rtf",
+    "case": "malformed",
+    "filename": "notes.rtf"
+  },
+  {
+    "parser_id": "document_rtf",
+    "case": "ambiguous",
+    "filename": "synthetic-telegram-facebook-export.bin",
+    "source_fixture": "notes.rtf",
+    "expected_subtype": "rtf"
+  },
+  {
+    "parser_id": "document_rtf",
+    "case": "resource",
+    "filename": "notes.rtf"
+  },
+  {
+    "parser_id": "document_odt",
+    "case": "malformed",
+    "filename": "notes.odt"
+  },
+  {
+    "parser_id": "document_odt",
+    "case": "ambiguous",
+    "filename": "synthetic-telegram-facebook-export.bin",
+    "source_fixture": "notes.odt",
+    "expected_subtype": "odt"
+  },
+  {
+    "parser_id": "document_odt",
+    "case": "resource",
+    "filename": "notes.odt"
+  },
+  {
+    "parser_id": "ebook_epub",
+    "case": "malformed",
+    "filename": "memoir.epub"
+  },
+  {
+    "parser_id": "ebook_epub",
+    "case": "ambiguous",
+    "filename": "synthetic-telegram-facebook-export.bin",
+    "source_fixture": "memoir.epub",
+    "expected_subtype": "epub"
+  },
+  {
+    "parser_id": "ebook_epub",
+    "case": "resource",
+    "filename": "memoir.epub"
+  },
+  {
+    "parser_id": "ebook_fb2",
+    "case": "malformed",
+    "filename": "memoir.fb2"
+  },
+  {
+    "parser_id": "ebook_fb2",
+    "case": "ambiguous",
+    "filename": "synthetic-telegram-facebook-export.bin",
+    "source_fixture": "memoir.fb2",
+    "expected_subtype": "fb2"
+  },
+  {
+    "parser_id": "ebook_fb2",
+    "case": "resource",
+    "filename": "memoir.fb2"
+  },
+  {
+    "parser_id": "archive_text",
+    "case": "malformed",
+    "filename": "archive.zip"
+  },
+  {
+    "parser_id": "archive_text",
+    "case": "ambiguous",
+    "filename": "synthetic-telegram-facebook-export.zip",
+    "source_fixture": "archive.zip",
+    "expected_subtype": "archive_text"
+  },
+  {
+    "parser_id": "archive_text",
+    "case": "resource",
+    "filename": "archive.zip"
+  },
+  {
+    "parser_id": "linkedin_export",
+    "case": "malformed",
+    "filename": "linkedin-export.zip"
+  },
+  {
+    "parser_id": "linkedin_export",
+    "case": "ambiguous",
+    "filename": "synthetic-telegram-facebook-export.zip",
+    "source_fixture": "linkedin-export.zip",
+    "expected_subtype": "linkedin_export"
+  },
+  {
+    "parser_id": "linkedin_export",
+    "case": "resource",
+    "filename": "linkedin-export.zip"
+  },
+  {
+    "parser_id": "instagram_export",
+    "case": "malformed",
+    "filename": "instagram-export.zip"
+  },
+  {
+    "parser_id": "instagram_export",
+    "case": "ambiguous",
+    "filename": "synthetic-telegram-facebook-export.zip",
+    "source_fixture": "instagram-export.zip",
+    "expected_subtype": "instagram_export"
+  },
+  {
+    "parser_id": "instagram_export",
+    "case": "resource",
+    "filename": "instagram-export.zip"
+  },
+  {
+    "parser_id": "facebook_export",
+    "case": "malformed",
+    "filename": "facebook-export.zip"
+  },
+  {
+    "parser_id": "facebook_export",
+    "case": "ambiguous",
+    "filename": "synthetic-telegram-facebook-export.zip",
+    "source_fixture": "facebook-export.zip",
+    "expected_subtype": "facebook_export"
+  },
+  {
+    "parser_id": "facebook_export",
+    "case": "resource",
+    "filename": "facebook-export.zip"
+  }
+]

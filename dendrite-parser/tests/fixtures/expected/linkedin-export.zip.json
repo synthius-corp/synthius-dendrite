@@ -1,0 +1,22 @@
+{
+  "corpus": "{\"id\":\"d_f1db53a5d9508d39_0\",\"reference_metadata\":{\"paragraph_end\":2,\"paragraph_start\":1,\"record\":1,\"text_sha256\":\"0f168c5308745f828f326e802a8295e34731490502e7986a570f2af6ada48914\",\"version\":1},\"source\":\"document\",\"text\":\"Company Name,Title,Description Example Lab,Researcher,Synthetic person records a calm morning routine, a collaborative project, a family call, and a plan to learn a new language next month. First Name,Last Name,Headline Synthetic,Alex,Artificial profile\",\"ts\":null,\"type\":\"cv\",\"uid\":\"document\",\"user\":\"Synthetic Person\"}\n",
+  "corpus_schema": "synthius-corpus/v1",
+  "corpus_sha256": "ca64625da44e422224e1eb8f785ddd0e5c82d358f59b4149d4bc41cfec970d0b",
+  "date_end": null,
+  "date_start": null,
+  "message_count": 1,
+  "parser_id": "linkedin_export",
+  "parser_version": "1.1.0",
+  "participants": [
+    {
+      "first_message": null,
+      "last_message": null,
+      "message_count": 1,
+      "name": "Synthetic Person",
+      "word_count": 31
+    }
+  ],
+  "source_sha256": "f1db53a5d9508d39ea9af2325b60a79800cc828a4e0b6feb2d6cd9f21a54aa98",
+  "subtype": "linkedin_export",
+  "word_count": 31
+}

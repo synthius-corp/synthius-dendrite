@@ -1,0 +1,22 @@
+{
+  "corpus": "{\"id\":\"d_fb5117ea5c50affb_0\",\"reference_metadata\":{\"paragraph_end\":2,\"paragraph_start\":1,\"record\":1,\"text_sha256\":\"29a549885823ed47288dbfaeb0cd5a8a5d9cae057a57b7e56c1ddccb967575e9\",\"version\":1},\"source\":\"document\",\"text\":\"Synthetic journal alias Synthetic person records a calm morning routine, a collaborative project, a family call, and a plan to learn a new language next month.\",\"ts\":null,\"type\":\"notes\",\"uid\":\"document\",\"user\":\"Synthetic Person\"}\n",
+  "corpus_schema": "synthius-corpus/v1",
+  "corpus_sha256": "b39cc3dd578584822766dfc9e551d2cfbd656dd3b3413d8da4d716221bbefce1",
+  "date_end": null,
+  "date_start": null,
+  "message_count": 1,
+  "parser_id": "document_markdown",
+  "parser_version": "1.1.0",
+  "participants": [
+    {
+      "first_message": null,
+      "last_message": null,
+      "message_count": 1,
+      "name": "Synthetic Person",
+      "word_count": 26
+    }
+  ],
+  "source_sha256": "fb5117ea5c50affb2ad272b29caa4dce7b2228502a4ccd4741f3cda0ef4abac1",
+  "subtype": "markdown",
+  "word_count": 26
+}

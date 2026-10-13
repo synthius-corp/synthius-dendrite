@@ -1,0 +1,12 @@
+{
+  "lockfiles": {
+    "Cargo.lock": "568b942e9f29739a85d271515e8dc07f2fcf2d4685c494ae1e32a20e53e7441d",
+    "src-tauri/Cargo.lock": "e50a62d1b0f9b6e0780cb4539db8d260458a3517be098e1e0b1fd171dfb7b4ab"
+  },
+  "applicationLicense": "de7b85c3cab72f9b2e54cf260f143acd7692e80fdbc6fa87adb65712955376e1",
+  "files": {
+    "LICENSE.txt": "de7b85c3cab72f9b2e54cf260f143acd7692e80fdbc6fa87adb65712955376e1",
+    "THIRD_PARTY_NOTICES.txt": "8ae174a830f276104923653f13d980f16ae5e815843d563921dd9ca807e76062",
+    "components.json": "9e41053d54779517db6c99682119f911dd6f083aac9eaaabd0aaa9878936a082"
+  }
+}

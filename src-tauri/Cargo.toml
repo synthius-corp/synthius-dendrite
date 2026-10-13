@@ -1,0 +1,62 @@
+[package]
+name = "synthius-dendrite"
+version = "2.1.4"
+description = "Synthius Dendrite local source app"
+authors = ["Synthius Team"]
+license = "Apache-2.0"
+edition = "2021"
+rust-version = "1.90"
+
+[lib]
+name = "app_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "~2.7.0", features = [] }
+serde_json = "1.0"
+base64 = "0.22"
+
+[dependencies]
+axum = { version = "0.7", features = ["multipart"] }
+serde_json = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+log = "0.4"
+chrono = { version = "0.4", features = ["clock"] }
+tauri = { version = "~2.12.0", features = ["tray-icon", "image-png"] }
+tauri-plugin-log = "2"
+tauri-plugin-single-instance = "=2.5.1"
+tauri-plugin-updater = "=2.12.0"
+tokio = { version = "1", features = ["fs", "net", "rt", "sync", "time"] }
+tokio-util = { version = "0.7", features = ["io"] }
+reqwest = { version = "0.12", features = ["json", "multipart"] }
+tower-http = { version = "0.6", features = ["cors"] }
+dirs = "6"
+open = "5"
+png = "0.17"
+walkdir = "2"
+jsonwebtoken = { version = "=10.4.0", features = ["rust_crypto"] }
+tempfile = "=3.24.0"
+uuid = { version = "1.19.0", features = ["v4"] }
+sha2 = "0.10"
+regex = "1.12"
+quick-xml = "0.42"
+zip = { version = "8.6", default-features = false, features = ["deflate"] }
+pdf-extract = "0.12.1"
+encoding_rs = "0.8"
+synthius-dendrite-parser = { path = "../dendrite-parser" }
+synthius-dendrite-telegram = { path = "../dendrite-telegram" }
+zeroize = "1"
+rusqlite = { version = "=0.37.0", features = ["bundled"] }
+flate2 = "=1.1.10"
+futures-util = "=0.3.34"
+tokio-tungstenite = { version = "=0.28.0", features = ["native-tls"] }
+unicode-normalization = "=0.1.25"
+unicode-casefold = "=0.2.0"
+
+[target.'cfg(windows)'.dependencies]
+keyring = { version = "=3.6.3", features = ["windows-native"] }
+tray-icon = { version = "=0.25.1", default-features = false }
+windows-sys = { version = "=0.61.2", features = ["Win32_Foundation", "Win32_System_LibraryLoader", "Win32_System_Registry", "Win32_UI_HiDpi", "Win32_UI_WindowsAndMessaging"] }
+
+[target.'cfg(target_os = "macos")'.dependencies]
+keyring = { version = "=3.6.3", features = ["apple-native"] }

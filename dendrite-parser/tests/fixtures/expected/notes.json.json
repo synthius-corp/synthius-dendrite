@@ -1,0 +1,22 @@
+{
+  "corpus": "{\"id\":\"d_3e120c029ae29adb_0\",\"reference_metadata\":{\"paragraph_end\":1,\"paragraph_start\":1,\"record\":1,\"text_sha256\":\"3e120c029ae29adb549887ac3dae86769550f83e542e752f0a4adcdfda33d089\",\"version\":1},\"source\":\"document\",\"text\":\"{\\\"title\\\":\\\"Synthetic journal\\\",\\\"body\\\":\\\"Synthetic person records a calm morning routine, a collaborative project, a family call, and a plan to learn a new language next month.\\\"}\",\"ts\":null,\"type\":\"notes\",\"uid\":\"document\",\"user\":\"Synthetic Person\"}\n",
+  "corpus_schema": "synthius-corpus/v1",
+  "corpus_sha256": "7c579f1e3e3bf1af9a1aff7c9cf65ae4b42d23c4f5806989ecf7f9eb7154a254",
+  "date_end": null,
+  "date_start": null,
+  "message_count": 1,
+  "parser_id": "document_json",
+  "parser_version": "1.1.0",
+  "participants": [
+    {
+      "first_message": null,
+      "last_message": null,
+      "message_count": 1,
+      "name": "Synthetic Person",
+      "word_count": 24
+    }
+  ],
+  "source_sha256": "3e120c029ae29adb549887ac3dae86769550f83e542e752f0a4adcdfda33d089",
+  "subtype": "document_json",
+  "word_count": 24
+}

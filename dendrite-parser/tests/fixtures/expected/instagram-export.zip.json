@@ -1,0 +1,22 @@
+{
+  "corpus": "{\"id\":\"d_49f558e4dd1b677d_0\",\"reference_metadata\":{\"paragraph_end\":2,\"paragraph_start\":1,\"record\":1,\"text_sha256\":\"db77ff682b0586ff8f2e7644f3652a589765890d265cf9f7991658543ef3ef10\",\"version\":1},\"source\":\"document\",\"text\":\"[{\\\"title\\\":\\\"Synthetic post\\\",\\\"text\\\":\\\"Synthetic person records a calm morning routine, a collaborative project, a family call, and a plan to learn a new language next month.\\\"}] {\\\"profileuser\\\":[{\\\"stringmapdata\\\":{\\\"Name\\\":{\\\"value\\\":\\\"Synthetic Alex\\\"}}}]}\",\"ts\":null,\"type\":\"notes\",\"uid\":\"document\",\"user\":\"Synthetic Person\"}\n",
+  "corpus_schema": "synthius-corpus/v1",
+  "corpus_sha256": "27ae3be4f41f6fa1b0bc40107eaba2bbc51aa3face366a59210a3e234ad8a90d",
+  "date_end": null,
+  "date_start": null,
+  "message_count": 1,
+  "parser_id": "instagram_export",
+  "parser_version": "1.1.0",
+  "participants": [
+    {
+      "first_message": null,
+      "last_message": null,
+      "message_count": 1,
+      "name": "Synthetic Person",
+      "word_count": 26
+    }
+  ],
+  "source_sha256": "49f558e4dd1b677decf0216148fa9a1e72267dfd17de02c5073984dade927895",
+  "subtype": "instagram_export",
+  "word_count": 26
+}

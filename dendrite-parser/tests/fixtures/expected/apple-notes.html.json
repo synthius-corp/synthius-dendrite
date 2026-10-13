@@ -1,0 +1,22 @@
+{
+  "corpus": "{\"id\":\"d_27460e44a2c00b44_0\",\"reference_metadata\":{\"paragraph_end\":1,\"paragraph_start\":1,\"record\":1,\"text_sha256\":\"7c961c338c7c2c6882222dc50c0a096c6abcad4625364abc4bb715bcbbc0cd06\",\"version\":1},\"source\":\"document\",\"text\":\"Synthetic person records a calm morning routine, a collaborative project, a family call, and a plan to learn a new language next month.\",\"ts\":null,\"type\":\"notes\",\"uid\":\"document\",\"user\":\"Synthetic Person\"}\n",
+  "corpus_schema": "synthius-corpus/v1",
+  "corpus_sha256": "dbf2adccf2f4d8dd21e3d42173170d72058b94d6a6a138a6dac5b1e324babbe2",
+  "date_end": null,
+  "date_start": null,
+  "message_count": 1,
+  "parser_id": "document_html",
+  "parser_version": "1.1.0",
+  "participants": [
+    {
+      "first_message": null,
+      "last_message": null,
+      "message_count": 1,
+      "name": "Synthetic Person",
+      "word_count": 23
+    }
+  ],
+  "source_sha256": "27460e44a2c00b44ef99c21f066f830270751efa6c0364447969335b36fd1675",
+  "subtype": "apple_notes",
+  "word_count": 23
+}

@@ -1,0 +1,22 @@
+{
+  "corpus": "{\"id\":\"d_0f6e96a4919bfb2b_0\",\"reference_metadata\":{\"paragraph_end\":2,\"paragraph_start\":1,\"record\":1,\"text_sha256\":\"42afc0d455d2675acb3e5742346dfed826b71748029e258f1bfe4fc9bd37513d\",\"version\":1},\"source\":\"document\",\"text\":\"--- tags: synthetic --- Daily note Synthetic person records a calm morning routine, a collaborative project, a family call, and a plan to learn a new language next month. See [[Synthetic Project]] for context.\",\"ts\":null,\"type\":\"notes\",\"uid\":\"document\",\"user\":\"Synthetic Person\"}\n",
+  "corpus_schema": "synthius-corpus/v1",
+  "corpus_sha256": "bdcee251ece91d1df85c9b9d1411eb98fd7979d0379dae4b97f891b5f6909cd8",
+  "date_end": null,
+  "date_start": null,
+  "message_count": 1,
+  "parser_id": "document_markdown",
+  "parser_version": "1.1.0",
+  "participants": [
+    {
+      "first_message": null,
+      "last_message": null,
+      "message_count": 1,
+      "name": "Synthetic Person",
+      "word_count": 34
+    }
+  ],
+  "source_sha256": "0f6e96a4919bfb2b6fc4de7075b813f3abbf41c781ddef5b39ba3188f2444826",
+  "subtype": "obsidian_md",
+  "word_count": 34
+}

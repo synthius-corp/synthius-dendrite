@@ -1,0 +1,29 @@
+{
+  "corpus": "{\"id\":\"d_97bde92a52a78e29_0\",\"reference_metadata\":{\"line_end\":1,\"line_start\":1,\"record\":1,\"text_sha256\":\"aeabad4d9821dc531739e3e1b333a24346cf80d28a8cf73ce895a97239cce1eb\",\"version\":1},\"source\":\"whatsapp\",\"text\":\"Synthetic whatsapp standard memory.\",\"ts\":\"01.02.2026 10:30\",\"type\":\"message\",\"uid\":\"Synthetic Alex\",\"user\":\"Synthetic Alex\"}\n{\"id\":\"d_97bde92a52a78e29_1\",\"reference_metadata\":{\"line_end\":2,\"line_start\":2,\"record\":2,\"text_sha256\":\"69f2a885c7230f3b2e6013f682218645d2664c6529cb740193d202e30413afbe\",\"version\":1},\"source\":\"whatsapp\",\"text\":\"Another artificial message.\",\"ts\":\"01.02.2026 10:31\",\"type\":\"message\",\"uid\":\"Synthetic Sam\",\"user\":\"Synthetic Sam\"}\n",
+  "corpus_schema": "synthius-corpus/v1",
+  "corpus_sha256": "291b7a8c721736fb5e11ea69ab88b178b8cd4f6c3c626255067a162e8aaa89f6",
+  "date_end": "01.02.2026 10:31",
+  "date_start": "01.02.2026 10:30",
+  "message_count": 2,
+  "parser_id": "whatsapp_text",
+  "parser_version": "1.1.0",
+  "participants": [
+    {
+      "first_message": "01.02.2026 10:30",
+      "last_message": "01.02.2026 10:30",
+      "message_count": 1,
+      "name": "Synthetic Alex",
+      "word_count": 4
+    },
+    {
+      "first_message": "01.02.2026 10:31",
+      "last_message": "01.02.2026 10:31",
+      "message_count": 1,
+      "name": "Synthetic Sam",
+      "word_count": 3
+    }
+  ],
+  "source_sha256": "97bde92a52a78e294844d8c2c86722554275c92fcba91a1501f8998a3c1a9a83",
+  "subtype": "whatsapp_txt",
+  "word_count": 7
+}

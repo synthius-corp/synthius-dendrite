@@ -1,0 +1,149 @@
+name: Release Dendrite Desktop (Production)
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: Exact production version tag (vX.Y.Z)
+        required: true
+        type: string
+      validation_run_id:
+        description: Optional successful full main CI for this exact source (never policy-only)
+        required: false
+        type: string
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: dendrite-desktop-${{ inputs.release_tag }}
+  cancel-in-progress: false
+
+env:
+  SYNTHIUS_RELEASE_CHANNEL: production
+  DENDRITE_RELEASE_TAG: ${{ inputs.release_tag }}
+  DENDRITE_VALIDATED_RUN_ID: ${{ inputs.validation_run_id }}
+
+jobs:
+  preflight:
+    outputs:
+      reuse_ci: ${{ steps.validation.outputs.reuse_ci }}
+    if: ${{ github.repository_id == '1417119504' && github.actor_id == '167432977' && github.actor == 'x-aero' && github.triggering_actor == 'x-aero' && github.ref == 'refs/heads/main' }}
+    environment: owner-release
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1, Node 24
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0, Node 24
+        with:
+          node-version: '24'
+      - name: Verify completed CI reuse when supplied
+        id: validation
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node scripts/ci-policy.cjs reuse
+      - name: Test release policy
+        run: npm test
+      - name: Check channel inputs and prevent rebuilding an existing release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          node scripts/release-guard.cjs
+          node - <<'NODE'
+          const {buildProfile,validateDesktopTag,reserveDesktopTag}=require('./scripts/desktop.cjs');
+          const {run,assertReleaseCanBeCreated}=require('./scripts/release.cjs');
+          validateDesktopTag(process.env.DENDRITE_RELEASE_TAG,require('./src-tauri/tauri.conf.json').version,process.env.SYNTHIUS_RELEASE_CHANNEL);
+          buildProfile(process.env.SYNTHIUS_RELEASE_CHANNEL,process.env);
+          assertReleaseCanBeCreated(JSON.parse(run('gh',['api','repos/synthius-corp/synthius-dendrite/releases?per_page=100'])),process.env.DENDRITE_RELEASE_TAG);
+          reserveDesktopTag(process.env.DENDRITE_RELEASE_TAG,require('./src-tauri/tauri.conf.json').version,process.env.SYNTHIUS_RELEASE_CHANNEL,process.env.GITHUB_SHA);
+          NODE
+  desktop:
+    needs: preflight
+    if: ${{ github.actor_id == '167432977' && github.triggering_actor == 'x-aero' && github.ref == 'refs/heads/main' }}
+    environment: owner-release
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: windows-latest
+            target: windows-x86_64
+          - runner: macos-15
+            target: macos-arm64
+          - runner: macos-15-intel
+            target: macos-x86_64
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1, Node 24
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0, Node 24
+        with:
+          node-version: '24'
+      - uses: dtolnay/rust-toolchain@686976e191b89faba57d3206551f0f330d8cb249
+        with:
+          toolchain: '1.92.0'
+          components: rustfmt
+      - uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6 # v2.9.2, Node 24
+        with:
+          key: desktop-production
+          workspaces: |
+            . -> target
+            src-tauri -> target
+          cache-on-failure: true
+      - name: Install locked desktop build tools
+        run: npm ci
+      - name: Test the selected desktop profile
+        if: needs.preflight.outputs.reuse_ci != 'true'
+        run: node scripts/desktop.cjs test
+      - name: Build the selected desktop installer
+        env:
+          SYNTHIUS_TELEGRAM_API_ID: ${{ secrets.SYNTHIUS_TELEGRAM_API_ID }}
+          SYNTHIUS_TELEGRAM_API_HASH: ${{ secrets.SYNTHIUS_TELEGRAM_API_HASH }}
+        run: node scripts/desktop.cjs build
+      - name: Collect desktop-only artifacts and provenance
+        env:
+          DENDRITE_RELEASE_TARGET: ${{ matrix.target }}
+        run: node scripts/desktop.cjs collect
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2, Node 24
+        id: upload
+        continue-on-error: true
+        with:
+          name: desktop-production-${{ matrix.target }}
+          path: staging/*
+          if-no-files-found: error
+      - name: Retry only the artifact upload
+        if: ${{ steps.upload.outcome == 'failure' }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2, Node 24
+        with:
+          name: desktop-production-${{ matrix.target }}
+          path: staging/*
+          if-no-files-found: error
+          overwrite: true
+  publish:
+    needs: desktop
+    if: ${{ github.actor_id == '167432977' && github.triggering_actor == 'x-aero' && github.ref == 'refs/heads/main' }}
+    environment: owner-release
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1, Node 24
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0, Node 24
+        with:
+          node-version: '24'
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2, Node 24
+        with:
+          pattern: desktop-production-*
+          path: staging
+          merge-multiple: true
+      - name: Verify provenance and publish the exact desktop release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node scripts/desktop.cjs publish

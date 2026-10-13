@@ -1,0 +1,17 @@
+version: 2
+updates:
+  - package-ecosystem: cargo
+    directory: /
+    schedule:
+      interval: weekly
+    reviewers: [x-aero]
+  - package-ecosystem: cargo
+    directory: /src-tauri
+    schedule:
+      interval: weekly
+    reviewers: [x-aero]
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    reviewers: [x-aero]

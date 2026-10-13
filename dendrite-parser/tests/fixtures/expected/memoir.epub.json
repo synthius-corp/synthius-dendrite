@@ -1,0 +1,22 @@
+{
+  "corpus": "{\"id\":\"d_21df732f34660712_0\",\"reference_metadata\":{\"paragraph_end\":1,\"paragraph_start\":1,\"record\":1,\"text_sha256\":\"7c961c338c7c2c6882222dc50c0a096c6abcad4625364abc4bb715bcbbc0cd06\",\"version\":1},\"source\":\"document\",\"text\":\"Synthetic person records a calm morning routine, a collaborative project, a family call, and a plan to learn a new language next month.\",\"ts\":null,\"type\":\"biography\",\"uid\":\"document\",\"user\":\"Synthetic Person\"}\n",
+  "corpus_schema": "synthius-corpus/v1",
+  "corpus_sha256": "29bed71e23a107221e306caeff1579a298d4e141c2ae377d7fccf07e2db6604a",
+  "date_end": null,
+  "date_start": null,
+  "message_count": 1,
+  "parser_id": "ebook_epub",
+  "parser_version": "1.1.0",
+  "participants": [
+    {
+      "first_message": null,
+      "last_message": null,
+      "message_count": 1,
+      "name": "Synthetic Person",
+      "word_count": 23
+    }
+  ],
+  "source_sha256": "21df732f34660712a6fdb288f046a0925cac346a1e4044e6ac01914731849f25",
+  "subtype": "epub",
+  "word_count": 23
+}

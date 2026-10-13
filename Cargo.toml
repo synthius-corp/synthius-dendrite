@@ -1,0 +1,4 @@
+[workspace]
+members = ["dendrite-parser", "dendrite-telegram"]
+exclude = ["src-tauri"]
+resolver = "2"

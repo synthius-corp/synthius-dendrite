@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "telegram-import",
+  "description": "Bundled one-time Telegram import screen only; external webviews receive no native importer access.",
+  "windows": ["telegram-import"],
+  "permissions": ["core:default"]
+}

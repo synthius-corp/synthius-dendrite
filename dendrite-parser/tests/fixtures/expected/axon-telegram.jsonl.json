@@ -1,0 +1,22 @@
+{
+  "corpus": "{\"id\":\"d_190a251da1c21c65_0\",\"reference_metadata\":{\"line_end\":1,\"line_start\":1,\"original_id\":\"tg-1:original\",\"record\":1,\"text_sha256\":\"128a46806886d66a03bd33c9a023302f8ed40c70369be90e18012e3d6c3df60c\",\"version\":1},\"source\":\"axon_telegram\",\"text\":\"Synthetic continuous Telegram memory about planning a coastal walk.\",\"ts\":\"2026-10-01T08:30:00Z\",\"type\":\"message\",\"uid\":\"Synthetic Friend\",\"user\":\"Synthetic Friend\"}\n{\"id\":\"d_190a251da1c21c65_1\",\"reference_metadata\":{\"line_end\":2,\"line_start\":2,\"original_id\":\"tg-1:edit-1\",\"record\":2,\"text_sha256\":\"0f400f2b3d27cb4c4b652a2a1ce02b715d302b1e8f4784c6d9746a82f878abe3\",\"version\":1},\"source\":\"axon_telegram\",\"text\":\"Synthetic continuous Telegram memory about planning a longer coastal walk.\",\"ts\":\"2026-10-01T08:31:00Z\",\"type\":\"edit\",\"uid\":\"Synthetic Friend\",\"user\":\"Synthetic Friend\"}\n",
+  "corpus_schema": "synthius-corpus/v1",
+  "corpus_sha256": "40f55e993ac721462bef9cc83fd6016e0fe7c14a94f6fe1f87e3cd275523ea0d",
+  "date_end": "2026-10-01T08:31:00Z",
+  "date_start": "2026-10-01T08:30:00Z",
+  "message_count": 2,
+  "parser_id": "axon_stream",
+  "parser_version": "1.1.0",
+  "participants": [
+    {
+      "first_message": "2026-10-01T08:30:00Z",
+      "last_message": "2026-10-01T08:31:00Z",
+      "message_count": 2,
+      "name": "Synthetic Friend",
+      "word_count": 19
+    }
+  ],
+  "source_sha256": "190a251da1c21c6551643dc81696127f71bc2f3e728706d4be0f74aee49b0320",
+  "subtype": "axon_telegram",
+  "word_count": 19
+}
