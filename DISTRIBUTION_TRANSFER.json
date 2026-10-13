@@ -1,0 +1,59 @@
+{
+  "releaseTag": "v2.1.4-preview.3",
+  "channel": "preview",
+  "desktopOnly": true,
+  "platforms": [
+    "windows-x86_64"
+  ],
+  "originalBuildSource": "b8cebaf2191eb60770dcc65b565444028708a9ed",
+  "originalPrivateRepository": "synthius-corp/synthius-dendrite-private-archive",
+  "originalPrivateRepositoryId": 1413068483,
+  "originalReleaseId": 411633918,
+  "rebuilt": false,
+  "originalProvenanceUnchanged": true,
+  "privateHistoryImported": false,
+  "tagRepresents": "Distribution transfer metadata only; not the original private build source",
+  "ownerAuthorizedPublicTransferOfOnlyThisPreview": true,
+  "assets": [
+    {
+      "name": "manifest-preview.json",
+      "size": 565,
+      "sha256": "15885f2c429f62cb8a8ab488d21f88962c5bfc4219ce38874e3125da1cd94f9e"
+    },
+    {
+      "name": "manifest-preview.json.sha256",
+      "size": 88,
+      "sha256": "41015bb53c11d2b7c5a29322f1697bf359b79c0ddee37186355c71ee249f71d2"
+    },
+    {
+      "name": "provenance-windows-x86_64.json",
+      "size": 1314,
+      "sha256": "1eef4e0598c9bf56cc008af0754996a929260bb75def8ff1265b8bb7c6cda078"
+    },
+    {
+      "name": "provenance-windows-x86_64.json.sha256",
+      "size": 97,
+      "sha256": "60c0eee4fe837484cbf91016530267aa4fc43417d7bc13de65e5ab9f1b6f805e"
+    },
+    {
+      "name": "sbom-windows-x86_64.cdx.json",
+      "size": 249946,
+      "sha256": "ebd1eece2945baf2321f413081a73f2c943fa3da5ea4fa86a6dc161da74b018e"
+    },
+    {
+      "name": "sbom-windows-x86_64.cdx.json.sha256",
+      "size": 95,
+      "sha256": "f5eddc2fbc5e056e102834bf3abb7183c6e5716245b1ded295f894057f81c560"
+    },
+    {
+      "name": "SynthiusDendritePreview-2.1.4-preview.3-windows-x86_64.exe",
+      "size": 7515159,
+      "sha256": "28e7a6069626c1bd5eec014d57f7f687c257ac354e1096c7d48b547d03c2ccbd"
+    },
+    {
+      "name": "SynthiusDendritePreview-2.1.4-preview.3-windows-x86_64.exe.sha256",
+      "size": 125,
+      "sha256": "d33c93de8d951d00c8d1e69c95ba01be6adf42a931f62dff9c7a5335fe080826"
+    }
+  ]
+}
