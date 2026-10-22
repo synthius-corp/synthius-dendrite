@@ -1,6 +1,6 @@
 [package]
 name = "synthius-dendrite"
-version = "2.1.4"
+version = "2.1.5"
 description = "Synthius Dendrite local source app"
 authors = ["Synthius Team"]
 license = "Apache-2.0"

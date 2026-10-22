@@ -5,6 +5,7 @@ const path=require('node:path');
 const os=require('node:os');
 const {validateDesktopTag,reserveDesktopTag,publicKeyIsValid,buildProfile,verifyDesktopRelease,profiles,TARGETS}=require('./desktop.cjs');
 const {digest}=require('./release.cjs');
+const baseVersion=require('../src-tauri/tauri.conf.json').version;
 const key=(role,ref)=>`e30.${Buffer.from(JSON.stringify({role,ref})).toString('base64url')}.synthetic`;
 test('production identity is preserved and preview is isolated',()=>{
   const prod=profiles.production,preview=profiles.preview;
@@ -116,16 +117,16 @@ test('desktop builds clear stale generated installers before packaging',()=>{
 });
 test('desktop-only publication checks all three installers and their channel/source provenance',()=>{
   const stage=fs.mkdtempSync(path.join(os.tmpdir(),'dendrite-desktop-release-'));
-  const commit='a'.repeat(40),tag='v2.1.4-preview.1';
+  const commit='a'.repeat(40),tag=`v${baseVersion}-preview.1`;
   const write=(name,value)=>{const bytes=typeof value==='string'?value:JSON.stringify(value);fs.writeFileSync(path.join(stage,name),bytes);fs.writeFileSync(path.join(stage,name+'.sha256'),`${digest(bytes)}  ${name}\n`);};
   try {
     for(const target of Object.keys(TARGETS)) {
-      const name=`SynthiusDendritePreview-2.1.4-preview.1-${target}${target.startsWith('windows')?'.exe':'.dmg'}`;
+      const name=`SynthiusDendritePreview-${tag.slice(1)}-${target}${target.startsWith('windows')?'.exe':'.dmg'}`;
       write(name,'synthetic installer');
       write(`provenance-${target}.json`,{repository:'https://github.com/synthius-corp/synthius-dendrite',sourceCommit:commit,tag,version:tag.slice(1),target,channel:'preview',desktopOnly:true,desktopProfile:profiles.preview,automaticUpdater:false,artifacts:[{name,sha256:digest('synthetic installer')}]});
     }
     const manifest=verifyDesktopRelease(stage,tag,'preview',commit);
-    assert.equal(Object.keys(manifest.downloads).length,3);assert.ok(manifest.downloads.windows.url.includes('/synthius-dendrite-private-archive/'));assert.match(manifest.downloads.windows.url,/releases\/download\/v2.1.4-preview.1\/SynthiusDendritePreview/);
+    assert.equal(Object.keys(manifest.downloads).length,3);assert.ok(manifest.downloads.windows.url.includes('/synthius-dendrite-private-archive/'));assert.ok(manifest.downloads.windows.url.includes(`/releases/download/${tag}/SynthiusDendritePreview`));
     assert.throws(()=>verifyDesktopRelease(stage,tag,'preview','b'.repeat(40)),/provenance mismatch/);
     assert.throws(()=>verifyDesktopRelease(stage,tag,'production',commit));
     write('dendrite-parser-linux-x86_64.tar.gz','unexpected');
@@ -134,14 +135,14 @@ test('desktop-only publication checks all three installers and their channel/sou
 });
 test('a local preview may publish only the platforms actually built',()=>{
   const stage=fs.mkdtempSync(path.join(os.tmpdir(),'dendrite-local-preview-'));
-  const commit='a'.repeat(40),tag='v2.1.4-preview.3',target='windows-x86_64';
-  const name=`SynthiusDendritePreview-2.1.4-preview.3-${target}.exe`;
+  const commit='a'.repeat(40),tag=`v${baseVersion}-preview.3`,target='windows-x86_64';
+  const name=`SynthiusDendritePreview-${tag.slice(1)}-${target}.exe`;
   const write=(file,value)=>{const bytes=typeof value==='string'?value:JSON.stringify(value);fs.writeFileSync(path.join(stage,file),bytes);fs.writeFileSync(path.join(stage,file+'.sha256'),`${digest(bytes)}  ${file}\n`);};
   try {
     write(name,'synthetic installer');
     write(`provenance-${target}.json`,{repository:'https://github.com/synthius-corp/synthius-dendrite',sourceCommit:commit,tag,version:tag.slice(1),target,channel:'preview',desktopOnly:true,desktopProfile:profiles.preview,automaticUpdater:false,artifacts:[{name,sha256:digest('synthetic installer')}]});
     const manifest=verifyDesktopRelease(stage,tag,'preview',commit,[target]);
     assert.deepEqual(Object.keys(manifest.downloads),['windows']);
-    assert.match(manifest.downloads.windows.url,/v2\.1\.4-preview\.3/);
+    assert.ok(manifest.downloads.windows.url.includes(`/${tag}/`));
   } finally {fs.rmSync(stage,{recursive:true,force:true});}
 });
