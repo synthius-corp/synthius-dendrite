@@ -2,8 +2,8 @@ const path=require('node:path');
 const profiles=require('../distribution/profiles.json');
 const ROOT=path.resolve(__dirname,'..');
 function localBuildPlan(url,key,noBundle=false) {
-  if(!['http://127.0.0.1:54321','http://localhost:54321'].includes(url)) {
-    throw new Error('Local-dev requires the isolated loopback Supabase project on port 54321');
+  if(!['http://127.0.0.1:54321','http://localhost:54321','http://127.0.0.1:45321','http://localhost:45321'].includes(url)) {
+    throw new Error('Local-dev requires the isolated loopback Supabase project on port 54321 or 45321');
   }
   let valid=/^sb_publishable_[A-Za-z0-9_-]+$/.test(key || '');
   if(!valid) {

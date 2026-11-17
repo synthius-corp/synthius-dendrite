@@ -21,7 +21,9 @@ may download ordinary Rust/npm dependencies. Account-backed features remain
 unavailable without live integration configuration; authentication is not bypassed.
 
 For maintainer integration with a fully local Windows webapp, use `build_local_dev.ps1` with the
-isolated Supabase URL on loopback port 54321 and its public key. It uses a debug
+isolated Supabase URL on loopback port 54321 (standard) or 45321 (the webapp's
+Docker dev stack) and its public key. The webapp requires the exact same Auth
+URL and the local-dev channel before pairing. It uses a debug
 build, separate identity/storage and disabled updates; outputs are under
 `dist/local-dev`. Production and preview release profiles cannot target this
 local project. No app needs to be launched to run the offline acceptance tests.
@@ -95,6 +97,10 @@ inputs before it creates a run on that same backend.
   single-instance guard.
 - `http://127.0.0.1:1543/api/health` returns a healthy response.
 - The web app can authenticate and synchronize the metadata-only source catalogue.
+- Create an empty persona in the webapp, then refresh the persona selector in
+  Add local source and Telegram. It appears with a Draft suffix without an
+  upload or interview. Refresh keeps a still-valid selection and source use;
+  removing the selected persona clears it instead of selecting another target.
 - **Open Synthius** opens Sources in the default browser and leaves
   the Dendrite window open. The link follows the compiled authentication project.
 - The status changes to **Local service ready** after health succeeds. Closing

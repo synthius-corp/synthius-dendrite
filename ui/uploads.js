@@ -2,16 +2,17 @@
  * as the web app. Account credentials are held in Rust, never this page. */
 (() => {
  const $ = id => document.getElementById(id), dialog = $('upload-dialog');
- let context = null, rows = [], busy = false, pause = false, batch = null, selected = [], duplicateCount = 0;
+ let context = null, rows = [], busy = false, pause = false, batch = null, selected = [], duplicateCount = 0, contextRequest = 0, contextLoading = false;
  const error = message => { $('upload-error').textContent = message; $('upload-error').hidden = !message; };
  function updateRetry() {
   const remaining=selected.filter(item=>!item.done).length;
-  $('upload-retry').hidden=!remaining||busy;
+  $('upload-retry').hidden=!remaining||busy||contextLoading||!context;
   $('upload-retry').textContent=`Continue ${remaining} selected file${remaining===1?'':'s'}`;
  }
  function stage(name) {
   for (const part of ['browse','progress','review','complete']) $('upload-'+part).hidden = part !== name;
   $('upload-close').disabled = busy;
+  $('upload-personas-refresh').disabled = busy || contextLoading;
   updateRetry();
   if(name==='progress')$('upload-pause').textContent='Pause after this file';
  }
@@ -19,6 +20,7 @@
   const response = await fetch('/api/desktop/uploads/'+path, {
    method:'POST', cache:'no-store', headers:{'X-Dendrite-Update-Token':UPDATE_TOKEN, ...(body instanceof FormData ? {} : {'Content-Type':'application/json'})},
    body: body instanceof FormData ? body : body === undefined ? undefined : JSON.stringify(body),
+   ...(path==='context'?{signal:AbortSignal.timeout(15000)}:{}),
   });
   const value = await response.json().catch(() => ({}));
   if (!response.ok) throw new Error(typeof value.detail === 'string' ? value.detail : value.detail?.message || 'Connect your Synthius account while Dendrite is running, then try again.');
@@ -35,22 +37,37 @@
   $('upload-usage').value='persona_source_and_context';
   $('upload-usage-help').textContent='Persona sources join the queue and support source search.';
   dialog.showModal();
-  for(const id of ['choose-files','choose-folders','upload-resume'])$(id).disabled=true;
-  $('upload-persona').replaceChildren();$('upload-formats').textContent='Connecting to your Synthius account…';
+  $('upload-persona').replaceChildren();
+  await refreshPersonas();
+ }
+ async function refreshPersonas() {
+  if(busy||contextLoading)return;
+  const request=++contextRequest, previousOwner=context?.user_id, previousSelection=$('upload-persona').value;
+  contextLoading=true;context=null;error('');updateRetry();
+  for(const id of ['choose-files','choose-folders','upload-resume','upload-persona','upload-personas-refresh'])$(id).disabled=true;
+  $('upload-personas-refresh').setAttribute('aria-busy','true');
+  $('upload-formats').textContent='Loading your personas…';
   try {
-   context=await api('context');
-   if(context.upload_allowed===false)throw new Error('Complete your Synthius account setup before adding sources.');
+   const current=await api('context');
+   if(request!==contextRequest)return;
+   if(!current.user_id||!Array.isArray(current.personas)||current.upload_allowed===false)throw new Error('Complete your Synthius account setup before adding sources.');
+   context=current;
    if(batch&&batch.user_id!==context.user_id){batch=null;selected=[];updateRetry();}
-   for(const persona of context.personas){const option=document.createElement('option');option.value=persona.id;option.textContent=persona.name;$('upload-persona').append(option);}
-   if(context.personas.length>1){const placeholder=document.createElement('option');placeholder.value='';placeholder.textContent='Choose a persona';$('upload-persona').prepend(placeholder);$('upload-persona').value='';}
+   $('upload-persona').replaceChildren();
+   for(const persona of context.personas){const option=document.createElement('option');option.value=persona.id;option.textContent=persona.name+(persona.is_draft===true?' · Draft':'');$('upload-persona').append(option);}
+   const retained=previousOwner===context.user_id&&context.personas.some(persona=>persona.id===previousSelection);
+   const placeholder=document.createElement('option');placeholder.value='';placeholder.textContent='Choose a persona';$('upload-persona').prepend(placeholder);
+   $('upload-persona').value=retained?previousSelection:!previousSelection&&context.personas.length===1?context.personas[0].id:'';
+   $('upload-persona').disabled=!context.personas.length;
    const accept=context.extensions.map(e=>'.'+e).join(',');$('upload-files').accept=accept;$('upload-folders').accept=accept;
    $('upload-formats').textContent=`${context.extensions.map(e=>e.toUpperCase()).join(' · ')} · Up to ${Math.round(context.max_file_bytes/1024/1024)} MB per file`;
    $('upload-structured-formats').textContent=context.structured_formats || 'Structured formats: Telegram JSON chats; JSON documents containing readable narrative text; Notion, LinkedIn, Instagram and Facebook ZIP exports.';
    $('upload-resume').hidden=!context.pending.length;$('upload-resume').textContent=`Continue ${context.pending.length} unfinished source${context.pending.length===1?'':'s'}`;
    for(const id of ['choose-files','choose-folders'])$(id).disabled=!$('upload-persona').value;
    $('upload-resume').disabled=false;
-   if(!context.personas.length)error('Create a persona in Synthius, then return here to add its sources.');
-  }catch(e){context=null;error(e.message);$('upload-retry').hidden=true;$('upload-formats').textContent='Connect your account in Synthius once. Dendrite then keeps its upload connection in this computer’s secure credential store.';}
+   if(!context.personas.length)error('Create a persona in Synthius, then refresh this list to add its sources.');
+  }catch(e){if(request!==contextRequest)return;context=null;$('upload-persona').replaceChildren();error(e.message);$('upload-retry').hidden=true;$('upload-formats').textContent='Connect your account in Synthius once. Dendrite then keeps its upload connection in this computer’s secure credential store.';}
+  finally{if(request===contextRequest){contextLoading=false;$('upload-personas-refresh').disabled=false;$('upload-personas-refresh').setAttribute('aria-busy','false');updateRetry();}}
  }
  function review() {
   busy=false;stage('review');const list=$('upload-review-list');list.replaceChildren();
@@ -123,6 +140,7 @@
   else{stage('complete');$('upload-result').textContent=`${completed} local source${completed===1?' is':'s are'} ready${duplicateCount?` · ${duplicateCount} already in Sources`:''}`;}
  }
  for(const id of ['add-local','add-local-sources','upload-again'])$(id).addEventListener('click',open);
+ $('upload-personas-refresh').addEventListener('click',refreshPersonas);
  for(const id of ['upload-close','upload-later','upload-done'])$(id).addEventListener('click',()=>{if(!busy)dialog.close();});
  dialog.addEventListener('cancel',event=>{if(busy){event.preventDefault();pause=true;}});
  $('upload-pause').addEventListener('click',()=>{pause=true;$('upload-pause').textContent='Pausing after this file…';});

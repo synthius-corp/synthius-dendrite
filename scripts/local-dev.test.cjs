@@ -19,6 +19,7 @@ test('local builds use debug outputs, their own identity/storage and disabled up
   }
   const profiles=require('../distribution/profiles.json');
   assert.notEqual(profiles['local-dev'].dataDirectory,profiles.production.dataDirectory);
+  assert.equal(localBuildPlan('http://127.0.0.1:45321',key('anon'),true).env.SYNTHIUS_SUPABASE_URL,'http://127.0.0.1:45321');
 });
 test('local builds reject hosted projects, URL tricks and privileged keys',()=>{
   for(const url of ['https://example.com','http://localhost.evil:54321','http://localhost:54321/','http://user@localhost:54321','http://localhost:54322']) {

@@ -5591,7 +5591,7 @@ dependencies = [
 
 [[package]]
 name = "synthius-dendrite"
-version = "2.1.5"
+version = "2.1.6"
 dependencies = [
  "axum",
  "base64 0.22.1",
